@@ -73,3 +73,7 @@ h1 {
 .submodules a:hover {
     color: #D1DAC3; /* Light greenish color for hover effect */
 }
+
+.container-fluid {
+    background-color: #D1DAC3;
+}
