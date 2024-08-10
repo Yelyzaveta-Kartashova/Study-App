@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F0DEE4; /* Light background color */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    margin: 20px 0;
+    color: #153653; /* Dark blue color for text */
+}
+
+.modules {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.module {
+    position: relative;
+    width: 30%;
+    margin: 10px;
+    border: 2px solid #59595F; /* Dark gray border color */
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #D1DAC3; /* Light greenish background color for module */
+}
+
+.module img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(21, 54, 83, 0.7); /* Dark blue overlay with opacity */
+    color: white;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.module:hover .overlay {
+    opacity: 1;
+}
+
+.submodules {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.submodules a {
+    display: block;
+    margin: 5px 0;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.submodules a:hover {
+    color: #D1DAC3; /* Light greenish color for hover effect */
+}
+
+.navbar {
+    background-color: #D1DAC3;
+}
