@@ -10,45 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 4) do
+ActiveRecord::Schema[7.1].define(version: 1) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "course_sections", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.bigint "subject_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["subject_id"], name: "index_course_sections_on_subject_id"
-  end
-
-  create_table "sections", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.bigint "subject_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["subject_id"], name: "index_sections_on_subject_id"
-  end
-
-  create_table "subjects", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.bigint "topic_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["topic_id"], name: "index_subjects_on_topic_id"
-  end
-
   create_table "topics", force: :cascade do |t|
     t.string "name"
-    t.text "description"
+    t.string "image_url"
+    t.string "video_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "course_sections", "subjects"
-  add_foreign_key "sections", "subjects"
-  add_foreign_key "subjects", "topics"
 end
