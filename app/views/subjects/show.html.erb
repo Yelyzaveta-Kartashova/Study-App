@@ -1,0 +1,33 @@
+
+<h1><%= @subject.name %></h1>
+
+<%= link_to 'Edit Subject', edit_subject_path(@subject) %> |
+<%= link_to 'Back to Subjects', subjects_path %>
+
+  <div class="inline-block ml-2">
+      <%= button_to "Destroy this subject", [@subject, @topic], method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+
+<h2>Topics</h2>
+<ul>
+  <% if @topics.present? %>
+    <% @topics.each do |topic| %>
+      <li><%= link_to topic.name, [@subject, topic] %></li>
+    <% end %>
+  <% else %>
+    <p>No topics available for this subject.</p>
+  <% end %>
+</ul>
+
+<h2>Add New Topic</h2>
+<%= form_with(model: [@subject, @subject.topics.build]) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit 'Create Topic' %>
+  </div>
+<% end %>
+

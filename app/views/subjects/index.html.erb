@@ -1,0 +1,23 @@
+
+<h1>Subjects</h1>
+
+<div class="new-subject-button" style="margin-top: 50px; margin-left: 5px;">
+  <%= button_to "New Subject", new_subject_path, class: "btn btn-light", method: :get %>
+</div>
+
+<div id="subjects-list" class="subject-card">
+  <% @subjects.each do |subject| %>
+    <div class="subject-item mb-4 p-4 border rounded-lg shadow-sm">
+      <h2 class="font-bold text-2xl">
+        <%= link_to subject.name, subject_path(subject), class: "text-blue-600 hover:text-blue-800" %>
+      </h2>
+      <div class="topics">
+      <p>
+        <%= link_to "View Topics", subject_topics_path(subject), class: "subject-card-link" %>
+        <%= link_to "Edit", edit_subject_path(subject), class: "subject-card-link"%>
+        <%= button_to "Delete", subject_path(subject), method: :delete, data: { confirm: "Are you sure?" }, class: "subject-card-link" %>
+      </p>
+      </div>
+    </div>
+  <% end %>
+</div>
