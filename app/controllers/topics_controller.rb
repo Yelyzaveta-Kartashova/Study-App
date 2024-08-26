@@ -13,6 +13,12 @@ class TopicsController < ApplicationController
 
   def new
     @topics = @subject.topics
+    @subject = Subject.find_by(id: params[:subject_id])
+    if @subject.nil?
+      redirect_to subjects_path, alert: "Subject not found"
+    else
+      @topic = @subject.topics.new
+    end
   end
 
   def create
