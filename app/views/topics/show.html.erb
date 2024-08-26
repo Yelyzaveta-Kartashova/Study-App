@@ -1,15 +1,30 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
+<div class="mx-auto md:w-2/3 w-full px-4 py-6 bg-white rounded-lg shadow-md">
+  <% if notice.present? %>
+    <p class="py-2 px-4 bg-green-100 text-green-800 font-medium rounded-lg mb-6" id="notice">
+      <%= notice %>
+    </p>
+  <% end %>
 
+  <div class="flex flex-col space-y-4">
+    <!-- Render Topic -->
     <%= render @topic %>
 
-    <%= link_to "Edit this topic", edit_subject_topic_path(@topic), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Back to topics", subject_topics_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to "Destroy this topic", [@subject, @topic], method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <div class="flex gap-4">
+      <%= link_to "Edit this topic", edit_subject_topic_path(@subject, @topic), class: "inline-flex items-center px-4 py-2 bg-gray-300 text-gray-800 font-semibold rounded-lg shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500" %>
+      
+      <%= link_to "Back to topics", subject_topics_path, class: "inline-flex items-center px-4 py-2 bg-gray-300 text-gray-800 font-semibold rounded-lg shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500" %>
+
+      <div class="inline-flex">
+        <%= button_to "Destroy this topic", [@subject, @topic], method: :delete, class: "inline-flex items-center px-4 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500" %>
+      </div>
     </div>
+
+    <!-- Create Topic Button -->
+    <%= form_with(model: @new_topic, url: subject_topics_path(@subject), local: true) do |form| %>
+      <div class="mt-4">
+        <%= link_to "New topic", new_subject_topic_path, class: "rounded-lg py-3 px-6 bg-green-900 text-white font-semibold shadow-lg hover:bg-green-800 transition-colors" %>
+  
+      </div>
+    <% end %>
   </div>
 </div>

@@ -1,10 +1,12 @@
 .subject-card {
-    background-color: #f9f9f9;
+    color: #D1DAC3;
+    background-color: #FFEBD4;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 10px;
+    padding: 30px;
     width: 30%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
   }
   .subject-card .action-links {
     margin-top: 15px;
@@ -15,11 +17,11 @@
     margin-right: 10px;
     padding: 8px 12px;
     border-radius: 4px;
+    color: #D1DAC3;
   }
   
   .subject-card-link {
-    background-color: white;
-    color: #153653;
+   color: white;
   }
   
  

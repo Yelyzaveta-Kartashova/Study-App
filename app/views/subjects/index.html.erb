@@ -1,23 +1,28 @@
-
-<h1>Subjects</h1>
-
-<div class="new-subject-button" style="margin-top: 50px; margin-left: 5px;">
-  <%= button_to "New Subject", new_subject_path, class: "btn btn-light", method: :get %>
+<div class="px-6 py-4">
+  <div class="flex justify-start">
+    <%= button_to new_subject_path, method: :get, class: "inline-flex items-center px-4 py-2 bg-green-900 text-white font-semibold rounded-lg shadow hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2" do %>
+      <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m7-7H5" />
+      </svg>
+      New Subject
+    <% end %>
+  </div>
 </div>
-
-<div id="subjects-list" class="subject-card">
-  <% @subjects.each do |subject| %>
-    <div class="subject-item mb-4 p-4 border rounded-lg shadow-sm">
-      <h2 class="font-bold text-2xl">
-        <%= link_to subject.name, subject_path(subject), class: "text-blue-600 hover:text-blue-800" %>
-      </h2>
-      <div class="topics">
-      <p>
-        <%= link_to "View Topics", subject_topics_path(subject), class: "subject-card-link" %>
+<div class="container-centre">
+  <h1 class="text-2xl font-bold">Subjects</h1>
+  <div class="modules">
+    <% @subjects.each do |subject| %>
+     <div class="module">
+        <%= image_tag subject.image_url, alt: subject.name %>
+       <div class="overlay">
+        <div class="submodules">
+        <%= link_to subject.name.capitalize, subject_topics_path(subject), class: "text-blue-600 hover:text-blue-800" %>
         <%= link_to "Edit", edit_subject_path(subject), class: "subject-card-link"%>
         <%= button_to "Delete", subject_path(subject), method: :delete, data: { confirm: "Are you sure?" }, class: "subject-card-link" %>
-      </p>
+        </div>
+        </div>
       </div>
+        <% end %>
     </div>
-  <% end %>
+  </div>
 </div>

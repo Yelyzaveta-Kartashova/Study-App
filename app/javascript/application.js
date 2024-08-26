@@ -2,9 +2,4 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-// app/javascript/application.js
-import { Turbo } from "@hotwired/turbo-rails"
-import { Turbo } from "@hotwired/turbo-rails"
-import { UJS } from "@rails/ujs"
 
-UJS.start()

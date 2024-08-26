@@ -9,6 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'bg-cream': '#FFEBD4',
+      },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },

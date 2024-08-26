@@ -2,6 +2,7 @@
 class TopicsController < ApplicationController
   before_action :set_subject
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_topics, only: [:new, :edit]
 
   def index
     @topics = @subject.topics
@@ -11,7 +12,7 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = @subject.topics.new
+    @topics = @subject.topics
   end
 
   def create
@@ -41,9 +42,6 @@ class TopicsController < ApplicationController
 
   private
 
-  before_action :set_subject
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
-
   def set_subject
     @subject = Subject.find(params[:subject_id])
   end
@@ -52,9 +50,12 @@ class TopicsController < ApplicationController
     @topic = @subject.topics.find(params[:id])
   end
 
+  def set_topics
+    @topics = @subject.topics
+  end
+
   def topic_params
     params.require(:topic).permit(:name, :description)
   end
 
-  
 end
