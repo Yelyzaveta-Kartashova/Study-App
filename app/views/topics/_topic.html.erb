@@ -1,7 +1,6 @@
 <div id="<%= dom_id topic %>">
   <p class="my-5">
     <strong class="block font-medium mb-1">Name:</strong>
-    <%= topic.name %>
+    <%= link_to topic.name.capitalize, subject_topic_lessons_path(@subject, topic), class: "text-green-900 hover:text-green-800" %>
   </p>
-
 </div>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :subjects do
-    resources :topics, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resources :topics do
+      resources :lessons
+    end
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

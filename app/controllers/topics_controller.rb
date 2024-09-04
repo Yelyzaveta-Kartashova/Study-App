@@ -1,4 +1,3 @@
-
 class TopicsController < ApplicationController
   before_action :set_subject
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
@@ -13,7 +12,7 @@ class TopicsController < ApplicationController
 
   def new
     @topics = @subject.topics
-    @subject = Subject.find_by(id: params[:subject_id])
+    @subject = Subject.find(params[:subject_id])
     if @subject.nil?
       redirect_to subjects_path, alert: "Subject not found"
     else

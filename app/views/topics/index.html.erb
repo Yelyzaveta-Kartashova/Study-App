@@ -1,4 +1,4 @@
-<div class="bg-cream w-full px-4 py-8 bg-gray-100 min-h-screen">
+<div class="bg-cream w-full px-4 py-8 min-h-screen">
   <% if notice.present? %>
     <p class="py-2 px-4 bg-green-100 text-green-700 font-medium rounded-lg mb-6" id="notice">
       <%= notice %>
@@ -7,18 +7,23 @@
 
   <% content_for :title, "Topics" %>
 
-  <div class="flex items-center justify-between mb-6">
-    <h1 class="text-4xl font-extrabold text-gray-900">Topics</h1>
-    <%= link_to "New topic", new_subject_topic_path, class: "rounded-lg py-3 px-6 bg-green-900 text-white font-semibold shadow-lg hover:bg-green-800 transition-colors" %>
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold">Topics</h1>
+    <%= button_to new_subject_topic_path, method: :get, class: "inline-flex items-center rounded-lg py-3 px-6 bg-green-900 text-white font-semibold shadow-lg hover:bg-green-800 transition-colors" do %>
+      <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m7-7H5" />
+      </svg>
+      New Topic
+    <% end %>
   </div>
 
   <div id="topics" class="flex flex-wrap justify-center gap-6">
     <% @topics.each do |topic| %>
-      <div class="w-[500px] h-[200px] bg-white border border-gray-200 shadow-sm rounded-lg overflow-hidden">
+      <div class="w-[400px] h-[200px] bg-white border border-gray-400 shadow-sm rounded-lg overflow-hidden">
         <%= render topic %>
-        <div class="flex justify-between items-center p-4">
+        <div class="flex justify-between items-center p-4 border-t border-gray-300">
           <%= link_to "Show this topic", [@subject, topic], class: "inline-block rounded-lg py-2 px-4 bg-green-900 text-white font-medium shadow hover:bg-green-800 transition-colors" %>
-          <%= link_to "Back to Subjects", subjects_path, class: "inline-block rounded-lg py-2 px-4 bg-gray-200 text-gray-800 font-medium shadow hover:bg-gray-300 transition-colors" %>
+          <%= link_to "Back to Subjects", subjects_path, class: "inline-block rounded-lg py-2 px-4 bg-gray-200 text-gray-800 font-medium shadow hover:bg-gray-200 transition-colors" %>
         </div>
       </div>
     <% end %>

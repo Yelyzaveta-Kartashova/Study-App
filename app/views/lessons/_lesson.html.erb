@@ -1,0 +1,6 @@
+<div id="<%= dom_id lesson %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= link_to lesson.title.capitalize, subject_topic_lessons_path(@topic, lesson), class: "text-green-900 hover:text-green-800" %>
+  </p>
+</div>
