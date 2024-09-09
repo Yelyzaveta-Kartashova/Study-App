@@ -9,6 +9,7 @@ class LessonsController < ApplicationController
   end
 
   def show
+    @lesson = Lesson.find(params[:id])
   end
   
 
@@ -27,6 +28,7 @@ class LessonsController < ApplicationController
   end
 
   def edit
+    # byebug
   end
 
   def update
@@ -45,16 +47,18 @@ class LessonsController < ApplicationController
   private
 
   def set_subject
-    @subject = Subject.find( params[:subject_id])
+    @subject = Subject.find(params[:subject_id])
     redirect_to subjects_path, alert: "Subject not found" if @subject.nil?
   end
 
   def set_topic
+    # byebug
     @topic = @subject.topics.find(params[:topic_id])
     redirect_to subject_path(@subject), alert: "Topic not found" if @topic.nil?
   end
 
   def set_lesson
+    # byebug
     @lesson = @topic.lessons.find(params[:id])
   end
 

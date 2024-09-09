@@ -4,7 +4,6 @@
       <%= notice %>
     </p>
   <% end %>
-
   <% content_for :title, "Topics" %>
 
   <div class="flex justify-between items-center mb-6">
@@ -20,11 +19,49 @@
   <div id="topics" class="flex flex-wrap justify-center gap-6">
     <% @topics.each do |topic| %>
       <div class="w-[400px] h-[200px] bg-white border border-gray-400 shadow-sm rounded-lg overflow-hidden">
-        <%= render topic %>
-        <div class="flex justify-between items-center p-4 border-t border-gray-300">
-          <%= link_to "Show this topic", [@subject, topic], class: "inline-block rounded-lg py-2 px-4 bg-green-900 text-white font-medium shadow hover:bg-green-800 transition-colors" %>
-          <%= link_to "Back to Subjects", subjects_path, class: "inline-block rounded-lg py-2 px-4 bg-gray-200 text-gray-800 font-medium shadow hover:bg-gray-200 transition-colors" %>
+      <div dir="rtl">
+          <div data-controller="dropdown" class="relative">
+            <div class="absolute h-14 w-14 top-0 start-0">
+              <button
+                type="button"
+                data-action="dropdown#toggle click@window->dropdown#hide"
+                class="flex items-center justify-center p-2 text-gray-600 hover:text-gray-900"
+              >
+                <!-- 3 dots for kebab menu -->
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="5" r="2" />
+                <circle cx="12" cy="12" r="2" />
+                <circle cx="12" cy="19" r="2" />
+              </svg>
+              </button>
+            </div>
+            <!-- Dropdown menu -->
+            <div
+              data-dropdown-target="menu"
+              class="hidden transition transform origin-top-left absolute right-0 mt-2 w-48"
+              data-transition-enter-from="opacity-0 scale-95"
+              data-transition-enter-to="opacity-100 scale-100"
+              data-transition-leave-from="opacity-100 scale-100"
+              data-transition-leave-to="opacity-0 scale-95"
+            >
+              <ul class="bg-white border rounded shadow-lg">
+                <li>
+                  <%= link_to "Show this topic", subject_topic_path(@subject, topic), class: "block px-4 py-2 text-gray-800 hover:bg-gray-200", data: { action: "dropdown#toggle" } %>
+                </li>
+                <li>
+                  <%= link_to "Show Lessons", subject_topic_lessons_path(@subject, topic, @lesson), class: "block px-4 py-2 text-gray-800 hover:bg-gray-200", data: { action: "dropdown#toggle" } %>
+                </li>
+                <li>
+                  <%= link_to "Add New Lesson", new_subject_topic_lesson_path(@subject, topic), class: "block px-4 py-2 text-gray-800 hover:bg-gray-200", data: { action: "dropdown#toggle" } %>
+                </li>
+                <li>
+                  <%= link_to "Back to Subjects", subjects_path, class: "block px-4 py-2 text-gray-800 hover:bg-gray-200", data: { action: "dropdown#toggle" } %>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+        <%= render topic %>
       </div>
     <% end %>
   </div>

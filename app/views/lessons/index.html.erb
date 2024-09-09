@@ -4,9 +4,7 @@
       <%= notice %>
     </p>
   <% end %>
-
   <% content_for :title, "Lessons" %>
-
   <div class="flex justify-between items-center mb-6">
     <h1 class="text-2xl font-bold">Lessons</h1>
     <%= button_to new_subject_topic_lesson_path(@subject, @topic), method: :get, class: "inline-flex items-center rounded-lg py-3 px-6 bg-green-900 text-white font-semibold shadow-lg hover:bg-green-800 transition-colors" do %>
@@ -16,18 +14,18 @@
     New Lesson
     <% end %>
   </div>
-
   <div id="lessons" class="flex flex-wrap justify-center gap-6">
     <% @lessons.each do |lesson| %>
       <div class="w-[400px] h-[200px] bg-white border border-gray-400 shadow-sm rounded-lg overflow-hidden">
-        <%= render lesson %>
+      <strong class="block font-medium mb-1">Name:</strong>
+      <%= render lesson %>
         <div class="flex justify-between items-center p-4 border-t border-gray-300">
-         <%= link_to "Show this lesson", subject_topic_lesson_path(@subject, @topic, lesson), class: "inline-block rounded-lg py-2 px-4 bg-green-900 text-white font-medium shadow hover:bg-green-800 transition-colors" %> 
-        <%= button_to "Delete this lesson", [@subject, @topic, @lesson], method: :delete, class: "inline-flex items-center px-4 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500" %>
+         <%= link_to "Edit this lesson", edit_subject_topic_lesson_path(@subject, @topic, lesson), class: "inline-flex ml-0 px-4 py-2 bg-gray-300 text-gray-800 font-semibold rounded-lg shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500" %>
+         <%= button_to "Delete this lesson", subject_topic_lesson_path(@subject, @topic, lesson), method: :delete, class: "inline-flex items-center px-4 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500" %>
         </div>
       </div>
     <% end %>
   </div>
-  <%= link_to "Back to Topic", subject_topics_path(@subject, @topic), class: "mt-5 inline-block rounded-lg py-2 px-4 bg-gray-200 text-gray-800 font-medium shadow hover:bg-gray-200 transition-colors" %>
+  <%= link_to "Back to Topics", subject_topics_path(@subject, @topic), class: "mt-5 inline-block rounded-lg py-2 px-4 bg-gray-200 text-gray-800 font-medium shadow hover:bg-gray-200 transition-colors" %>
 </div>
 
