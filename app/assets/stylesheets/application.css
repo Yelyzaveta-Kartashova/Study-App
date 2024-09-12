@@ -1,15 +1,78 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+body {
+    font-family: serif;
+    background-color:#FFEBD4; /* Light background color */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  h1 {
+    margin: 20px 0;
+    color: #153653; /* Dark blue color for text */
+  }
+  
+  .modules {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .module {
+    position: relative;
+    width: 30%;
+    margin: 10px;
+    border: 2px solid #59595F; /* Dark gray border color */
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #D1DAC3; /* Light greenish background color for module */
+    width: 300px;
+    height: 200px;
+  }
+  
+  .module img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(21, 54, 83, 0.7); /* Dark blue overlay with opacity */
+    color: white;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  
+  .module:hover .overlay {
+    opacity: 1;
+  }
+  
+  .submodules {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  .submodules a {
+    display: block;
+    margin: 5px 0;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .submodules a:hover {
+    color: #D1DAC3; /* Light greenish color for hover effect */
+  }
