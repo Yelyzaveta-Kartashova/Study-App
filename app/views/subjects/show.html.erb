@@ -1,0 +1,38 @@
+<div class="mt-10 max-w-3xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+<div class="module-confirnation">
+  <!-- Subject Header -->
+<div class="relative">
+  <%= image_tag @subject.image_url, alt: @subject.name, class: "max-h-[150px] w-full object-cover opacity-25" %>
+  <h1 class=" font-serif absolute inset-0 flex items-center justify-center text-3xl font-extrabold text-gray-900">
+    <%= @subject.name.capitalize %>
+  </h1>
+</div>
+  
+
+  <!-- Action Links -->
+  <div class="mb-6">
+    <%= link_to 'Edit Subject', edit_subject_path(@subject), class: "font-serif text-black-500 hover:underline mr-4" %> |
+    <%= link_to 'Back to Subjects', subjects_path, class: "font-serif text-black-600 hover:underline" %>
+  </div>
+
+  <!-- Destroy Button -->
+  <div class="inline-block ml-2">
+    <%= button_to "Destroy this subject", @subject, method: :delete, class: "bg-red-500 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500" %>
+  </div>
+</div>
+
+  <!-- Add New Topic Section -->
+  <div class="mt-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Add New Topic</h2>
+    <%= form_with(model: [@subject, @subject.topics.build], local: true, class: 'space-y-4') do |form| %>
+      <div>
+        <%= form.label :name, class: 'block text-gray-700 font-medium mb-2' %>
+        <%= form.text_field :name, class: 'w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500' %>
+      </div>
+
+      <div>
+        <%= form.submit 'Create Topic', class: 'bg-green-900  text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-green-800  focus:outline-none focus:ring-2 focus:ring-blue-500' %>
+      </div>
+    <% end %>
+  </div>
+</div>

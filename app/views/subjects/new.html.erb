@@ -1,0 +1,9 @@
+<div class="mt-10 max-w-3xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+  <h1 class="text-4xl font-extrabold text-gray-900 mb-8">New Subject</h1>
+
+  <%= render 'form', subject: @subject %>
+
+  <div class="mt-8">
+    <%= link_to 'Back', subjects_path, class: "inline-block bg-gray-200 text-gray-800 font-medium py-2 px-4 rounded-lg shadow hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500" %>
+  </div>
+</div>

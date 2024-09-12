@@ -1,0 +1,26 @@
+<%= form_with(model: subject, local: true, class: 'w-full max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg') do |form| %>
+  <% if subject.errors.any? %>
+    <div id="error_explanation" class="bg-red-100 border border-red-400 text-red-700 p-4 rounded mb-4">
+      <h2 class="font-semibold text-lg"><%= pluralize(subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
+      <ul class="list-disc pl-5 mt-2">
+        <% subject.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-4">
+    <%= form.label :name, class: 'block text-gray-700 font-medium mb-2' %>
+    <%= form.text_field :name, class: 'w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500' %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :image_url, class: 'block text-gray-700 font-medium mb-2' %>
+    <%= form.text_field :image_url, class: 'w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500' %>
+  </div>
+
+  <div class="flex items-center justify-end">
+    <%= form.submit 'Save', class: 'bg-green-900 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-blue-500' %>
+  </div>
+<% end %>

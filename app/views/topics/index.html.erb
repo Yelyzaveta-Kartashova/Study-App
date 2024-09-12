@@ -1,21 +1,27 @@
-<div class="w-full">
+<div class="bg-cream w-full px-4 py-8 min-h-screen">
   <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <p class="py-2 px-4 bg-green-100 text-green-700 font-medium rounded-lg mb-6" id="notice">
+      <%= notice %>
+    </p>
   <% end %>
-
   <% content_for :title, "Topics" %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Topics</h1>
-    <%= link_to "New topic", new_topic_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold">Topics</h1>
+    <%= button_to new_subject_topic_path, method: :get, class: "inline-flex items-center rounded-lg py-3 px-6 bg-green-900 text-white font-semibold shadow-lg hover:bg-green-800 transition-colors" do %>
+      <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m7-7H5" />
+      </svg>
+      New Topic
+    <% end %>
   </div>
 
-  <div id="topics" class="min-w-full">
+  <div id="topics" class="flex flex-wrap justify-center gap-6">
     <% @topics.each do |topic| %>
-      <%= render topic %>
-      <p>
-        <%= link_to "Show this topic", topic, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
+      <div class="w-[400px] h-[200px] bg-white border border-gray-400 shadow-sm rounded-lg overflow-hidden">
+      
+        <%= render topic %>
+      </div>
     <% end %>
   </div>
 </div>
