@@ -8,7 +8,7 @@ const s = class _Dropdown extends t {
     })
   }
   toggle() {
-    console.log('fuck')
+    console.log('heyyyy')
     this.toggleTransition()
   }
   hide(t) {
