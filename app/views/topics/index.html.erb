@@ -67,6 +67,21 @@
         </div>
       </div>
         <%= render topic %>
+       
+        <!-- list of lessons for topics -->
+        <div class="flex justify-around items-center p-4 border-t border-gray-300">
+          <% if topic.lessons.present? %>
+            <ul class="list-none">
+              <% topic.lessons.first(3).each do |lesson| %>
+                <li id="<%= dom_id lesson %>" >
+                  <%= link_to lesson.title.capitalize, subject_topic_lesson_path(@subject, topic, lesson), class: "text-green-900 hover:text-green-800" %>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p class="text-gray-600">No lessons available for this topic.</p>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>

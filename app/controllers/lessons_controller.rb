@@ -52,13 +52,11 @@ class LessonsController < ApplicationController
   end
 
   def set_topic
-    # byebug
     @topic = @subject.topics.find(params[:topic_id])
     redirect_to subject_path(@subject), alert: "Topic not found" if @topic.nil?
   end
 
   def set_lesson
-    # byebug
     @lesson = @topic.lessons.find(params[:id])
   end
 
