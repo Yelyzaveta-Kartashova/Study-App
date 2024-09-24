@@ -50,11 +50,11 @@ class TopicsController < ApplicationController
   private
 
   def set_subject
-    @subject = Subject.find(params[:subject_id])
+    @subject = Subject.friendly.find(params[:subject_id])
   end
 
   def set_topic
-    @topic = @subject.topics.find(params[:id])
+    @topic = @subject.topics.friendly.find(params[:id])
   end
 
   def set_topics
