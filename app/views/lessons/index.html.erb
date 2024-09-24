@@ -51,12 +51,14 @@
                 <%= link_to "Edit this lesson", edit_subject_topic_lesson_path(@subject, @topic, lesson), class: "block px-4 py-2 text-gray-800 hover:bg-gray-200", data: { action: "dropdown#toggle" } %>
               </li>
               <li>
-                <%= button_to "Delete this lesson", subject_topic_lesson_path(@subject, @topic, lesson), method: :delete, class: "block px-4 py-2 text-gray-800 hover:bg-gray-200", data: { action: "dropdown#toggle" } %>
+                <%= form_with url: subject_topic_lesson_path(@subject, @topic, lesson), method: :delete, class: "block px-4 py-2 text-gray-800 hover:bg-gray-200" do %> 
+                  <% submit_tag "Delete this lesson", data: { action: "dropdown#toggle" } %>
+                <% end %>
               </li>
             </ul>
           </div>
         </div>
-      </div>
+      </div>      
       <strong class="mt-2 block font-medium mb-1">Name:</strong>
       <%= render lesson %>
       </div>
