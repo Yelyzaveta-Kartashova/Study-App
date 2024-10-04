@@ -1,15 +1,17 @@
-<div class="mt-10 px-6 py-3">
-  <div class="flex justify-start">
-    <%= button_to new_subject_path, method: :get, class: "inline-flex  mt-7 px-6 py-2 bg-green-900 text-white font-semibold rounded-lg shadow hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2" do %>
+<div class="flex space-x-80 mt-5">
+  <div>
+    <%= button_to new_subject_path, method: :get, class: "inline-flex  ml-12 mt-4 px-6 py-2 bg-green-900 text-white font-semibold rounded-lg shadow hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2" do %>
       <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m7-7H5" />
       </svg>
       New Subject
     <% end %>
   </div>
+  <div>
+    <h1 class="text-2xl font-bold">Subjects</h1>
+  </div>
 </div>
 <div class="container-centre">
-  <h1 class="text-2xl font-bold">Subjects</h1>
   <div class="modules">
     <% @subjects.each do |subject| %>
      <div class="module">
