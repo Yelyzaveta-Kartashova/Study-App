@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 8) do
+ActiveRecord::Schema[7.1].define(version: 10) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,15 @@ ActiveRecord::Schema[7.1].define(version: 8) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "lesson_tags", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_lesson_tags_on_lesson_id"
+    t.index ["tag_id"], name: "index_lesson_tags_on_tag_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -43,6 +52,12 @@ ActiveRecord::Schema[7.1].define(version: 8) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.index ["slug"], name: "index_subjects_on_slug", unique: true
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "topics", force: :cascade do |t|
@@ -67,6 +82,8 @@ ActiveRecord::Schema[7.1].define(version: 8) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "lesson_tags", "lessons"
+  add_foreign_key "lesson_tags", "tags"
   add_foreign_key "lessons", "topics"
   add_foreign_key "topics", "subjects"
 end
