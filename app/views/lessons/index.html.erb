@@ -5,44 +5,47 @@
     </p>
   <% end %>
   <% content_for :title, "Lessons" %>
-  <div class="flex justify-between items-center mb-6">
+  <div class="flex space-x-52 mt-5">
+    <div>
+      <%= button_to new_subject_topic_lesson_path(@subject, @topic), method: :get, class: "inline-flex  ml-40 mt-4 px-6 py-2 bg-green-900 text-white font-semibold rounded-lg shadow hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2" do %>
+      <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m7-7H5" />
+      </svg>
+      New Lesson
+      <% end %>
+    </div>
+    <div>
     <h1 class="text-2xl font-bold">Lessons</h1>
-    <%= button_to new_subject_topic_lesson_path(@subject, @topic), method: :get, class: "inline-flex items-center rounded-lg py-3 px-6 bg-green-900 text-white font-semibold shadow-lg hover:bg-green-800 transition-colors" do %>
-    <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m7-7H5" />
-    </svg>
-    New Lesson
-    <% end %>
+    </div>
   </div>
-  <div id="lessons" class="flex flex-wrap justify-center gap-6">
-    <% @lessons.each do |lesson| %>
-      <div class="w-[400px] h-[150px] bg-white border border-gray-400 shadow-sm rounded-lg overflow-hidden">
-
- <div dir="rtl">
-        <div data-controller="dropdown" class="relative">
-          <div class="absolute h-14 w-14 top-0 start-0">
-            <button
-              type="button"
-              data-action="dropdown#toggle click@window->dropdown#hide"
-              class="flex items-center justify-center p-2 text-gray-600 hover:text-gray-900"
-            >
-              <!-- 3 dots for kebab menu -->
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="5" r="2" />
-              <circle cx="12" cy="12" r="2" />
-              <circle cx="12" cy="19" r="2" />
-            </svg>
-            </button>
-          </div>
+    <div id="lessons" class="flex flex-wrap justify-center gap-6 mt-8 ">
+      <% @lessons.each do |lesson| %>
+        <div class="w-[400px] h-[150px] bg-white border border-gray-400 shadow-sm rounded-lg overflow-hidden">
+        <div dir="rtl">
+          <div data-controller="dropdown" class="relative">
+            <div class="absolute h-14 w-14 top-0 start-0">
+              <button
+                type="button"
+                data-action="dropdown#toggle click@window->dropdown#hide"
+                class="flex items-center justify-center p-2 text-gray-600 hover:text-gray-900"
+              >
+                <!-- 3 dots for kebab menu -->
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="5" r="2" />
+                <circle cx="12" cy="12" r="2" />
+                <circle cx="12" cy="19" r="2" />
+              </svg>
+              </button>
+            </div>
           <!-- Dropdown menu -->
-          <div
-            data-dropdown-target="menu"
-            class="hidden transition transform origin-top-left absolute right-0 mt-2 w-48"
-            data-transition-enter-from="opacity-0 scale-95"
-            data-transition-enter-to="opacity-100 scale-100"
-            data-transition-leave-from="opacity-100 scale-100"
-            data-transition-leave-to="opacity-0 scale-95"
-          >
+            <div
+              data-dropdown-target="menu"
+              class="hidden transition transform origin-top-left absolute right-0 mt-2 w-48"
+              data-transition-enter-from="opacity-0 scale-95"
+              data-transition-enter-to="opacity-100 scale-100"
+              data-transition-leave-from="opacity-100 scale-100"
+              data-transition-leave-to="opacity-0 scale-95"
+            >
             <ul class="bg-white border rounded shadow-lg ">
               <li>
                 <%= link_to "Show this lesson", subject_topic_lesson_path(@subject, @topic, lesson), class: "block px-4 py-2 text-gray-800 hover:bg-gray-200", data: { action: "dropdown#toggle" } %>
@@ -52,7 +55,7 @@
               </li>
               <li>
                 <%= form_with url: subject_topic_lesson_path(@subject, @topic, lesson), method: :delete, class: "block px-4 py-2 text-gray-800 hover:bg-gray-200" do %> 
-                  <% submit_tag "Delete this lesson", data: { action: "dropdown#toggle" } %>
+                <% submit_tag "Delete this lesson", data: { action: "dropdown#toggle" } %>
                 <% end %>
               </li>
             </ul>
@@ -61,9 +64,15 @@
       </div>      
       <strong class="mt-2 block font-medium mb-1">Name:</strong>
       <%= render lesson %>
-      </div>
-    <% end %>
-  </div>
-  <%= link_to "Back to Topics", subject_topics_path(@subject, @topic), class: "mt-5 inline-block rounded-lg py-2 px-4 bg-gray-200 text-gray-800 font-medium shadow hover:bg-gray-200 transition-colors" %>
+        <div class="flex flex-wrap gap-1 border-t ">
+          <% lesson.tags.each do |tag| %>
+            <span class="ml-2 mt-2 inline-block bg-blue-100 text-gray-900 text-sm font-medium px-3 py-1 rounded-md">
+              #<%= tag.name %>
+            </span>
+          <% end %>
+        </div>
+        </div>
+      <% end %>
+    </div>
+  <%= link_to "Back to Topics", subject_topics_path(@subject, @topic), class: "mt-10 inline-block rounded-lg py-2 px-4 bg-gray-200 text-gray-800 font-medium shadow hover:bg-gray-200 transition-colors" %>
 </div>
-

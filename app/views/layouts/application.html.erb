@@ -8,13 +8,26 @@
 
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="https://unpkg.com/slim-select@latest/dist/slimselect.css" />
     <%= javascript_importmap_tags %>
 
   </head>
 
   <body>
-     <%= render "shared/navbar" %>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <%= render "shared/navbar" %>
+    
+    <% if notice.present? %>
+      <div class="notice" role="alert">
+        <%= notice %>
+    <% end %>
+    
+    <% if alert.present? %>
+      <div class="alert" role="alert">
+        <%= alert %>
+      </div>
+    <% end %>
+
+    <main class="container">
       <%= yield %>
     </main>
   </body>
