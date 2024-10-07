@@ -1,15 +1,20 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  connect() {
-    // console.log('in navbar menu');
+  static targets = ["menu", "mobileMenu"];
+
+  toggle() {
+    this.menuTarget.classList.toggle("hidden");
   }
 
-  toggleHamburgerMenu() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenu) {
-      mobileMenu.classList.toggle('hidden');
-    } 
+  hide(event) {
+    if (!this.element.contains(event.target)) {
+      this.menuTarget.classList.add("hidden");
+    }
+  }
+
+  toggleMobileMenu() {
+    const mobileMenu = document.getElementById("mobile-menu");
+    mobileMenu.classList.toggle("hidden");
   }
 }
