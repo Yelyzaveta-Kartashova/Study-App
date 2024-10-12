@@ -10,7 +10,11 @@ class SubjectsController < ApplicationController
   end
 
   def new
-    @subject = Subject.new
+    if (current_user.admin? || current_user.teacher?)
+      @subject = Subject.new
+    else
+      redirect_to subjects_path, alert: 'You are not authorized to create subjects.'
+    end
   end
 
   def create
