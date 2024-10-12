@@ -219,8 +219,8 @@ Lesson.create!(
   tags: [tailwind_css_tag, css_tag]  # Removed coding_subject and added tailwind_css_tag and css_tag
 )
 
-puts "Seed data for Art, Maths, Languages, and Coding created successfully!"
-
 Role.create!(name: 'Admin')
 Role.create!(name: 'Teacher')
 Role.create!(name: 'Student')
+
+puts "Seed data for Art, Maths, Languages, Coding, and roles created successfully!"
