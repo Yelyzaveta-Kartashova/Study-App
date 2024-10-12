@@ -37,6 +37,7 @@
                   data-transition-leave-from="opacity-100 scale-100"
                   data-transition-leave-to="opacity-0 scale-95"
                 >
+                <% @subjects = Subject.all %>
                   <% if @subjects.present? %>
                     <% @subjects.each do |subject| %>
                       <div class="relative group">
