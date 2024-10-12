@@ -1,6 +1,7 @@
-puts 'Deleting all subjects'
+puts 'Deleting all subjects, tags and Roles'
 Subject.destroy_all
 Tag.destroy_all
+Role.destroy_all
 
 puts 'Starting seed.........'
 
@@ -219,3 +220,7 @@ Lesson.create!(
 )
 
 puts "Seed data for Art, Maths, Languages, and Coding created successfully!"
+
+Role.create!(name: 'Admin')
+Role.create!(name: 'Teacher')
+Role.create!(name: 'Student')
