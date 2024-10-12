@@ -3,7 +3,6 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
 
   toggleSubjectsMenu() {
-
     const subjectsMenu = document.getElementById("subjects-menu");
     subjectsMenu.classList.toggle("hidden");
       
@@ -11,7 +10,6 @@ export default class extends Controller {
   }
 
   toggleTopicsMenu(event) {
-
     event.preventDefault();
     const topicsMenu = document.getElementById("topics-menu");
     topicsMenu.classList.toggle("hidden");
@@ -20,7 +18,6 @@ export default class extends Controller {
   }
 
   toggleMobileMenu() {
-
     const mobileMenu = document.getElementById("mobile-menu");
     mobileMenu.classList.toggle("hidden");
     

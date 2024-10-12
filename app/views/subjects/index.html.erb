@@ -1,19 +1,15 @@
-<div class="flex space-x-80 mt-5">
-  <div>
-    <% if (current_user.admin? || current_user.teacher?) %>
-      <%= button_to new_subject_path, method: :get, class: "inline-flex  ml-12 mt-4 px-6 py-2 bg-green-900 text-white font-semibold rounded-lg shadow hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2" do %>
-        <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m7-7H5" />
-        </svg>
-        New Subject
-      <% end %>
-    <% end %>
-  </div>
-  <div>
-  </div>
-  <div>
+<div class="relative flex justify-center mt-5">
+  <div class="flex-1 text-center">
     <h1 class="text-2xl font-bold">Subjects</h1>
   </div>
+  <% if (current_user.admin? || current_user.teacher?) %>
+    <%= button_to new_subject_path, method: :get, class: "absolute left-0 ml-12 mt-4 inline-flex items-center px-6 py-2 bg-green-900 text-white font-semibold rounded-lg shadow hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2 whitespace-nowrap" do %>
+      <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m7-7H5" />
+      </svg>
+      New Subject
+    <% end %>
+  <% end %>
 </div>
 <div class="container-centre">
   <div class="modules">
