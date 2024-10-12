@@ -21,7 +21,7 @@
   </div>
 
   <div class="mb-4">
-    <%= form.label :tag_ids, class: 'block text-gray-700 font-medium mb-2'%>
+    <%= form.label :tags, class: 'block text-gray-700 font-medium mb-2'%>
     <%= form.select :tag_ids, Tag.all.map { |tag| ["#{tag.name}", tag.id] }, {}, { multiple: true, data: { controller: "slim-select" } }  %>
   </div>
 

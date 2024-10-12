@@ -16,11 +16,18 @@
     <h1 class="text-2xl font-bold text-gray-800"><%= @lesson.title %></h1>
     <p class="text-gray-700"><%= h auto_link(simple_format(@lesson.content), html: { class: 'no-underline hover:underline text-green-800' }) %>
     </p>
+     <div class="flex justify-center mt-2 gap-1 ">
+      <% @lesson.tags.each do |tag| %>
+        <span class="ml-2 mt-2 inline-block bg-blue-100 text-gray-900 text-sm font-medium px-3 py-1 rounded-md">
+          #<%= tag.name %>
+        </span>
+      <% end %>
+    </div>
   </div>
-  <div class="flex justify-around items-center p-4 border-t border-gray-300">
+  <div class="flex justify-around items-center mt-5 p-4 border-gray-300">
     <%= link_to "Edit this lesson", edit_subject_topic_lesson_path(@subject, @topic, @lesson), class: "inline-flex ml-0 px-4 py-2 bg-gray-300 text-gray-800 font-semibold rounded-lg shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500" %>
     <div class="inline-flex">
-      <%= button_to "Delete this lesson", subject_topic_lesson_path(@subject, @topic, @lesson), method: :delete, data: { confirm: "Are you sure?" }, class: "subject-card-link" %>
+      <%= button_to "Delete this lesson", subject_topic_lesson_path(@subject, @topic, @lesson), method: :delete, data: { confirm: "Are you sure?" }, class: "bg-red-500 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500" %>
     </div>
   <%= link_to "Back to lessons", subject_topic_lessons_path(@subject, @topic), class: "inline-flex mr-0 px-4 py-2 bg-gray-300 text-gray-800 font-semibold rounded-lg shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500" %>
   </div>
