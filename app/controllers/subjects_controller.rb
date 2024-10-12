@@ -10,7 +10,7 @@ class SubjectsController < ApplicationController
   end
 
   def new
-    if current_user.roles.exists?(name: ['Admin', 'Teacher'])
+    if (current_user.admin? || current_user.teacher?)
       @subject = Subject.new
     else
       redirect_to subjects_path, alert: 'You are not authorized to create subjects.'
