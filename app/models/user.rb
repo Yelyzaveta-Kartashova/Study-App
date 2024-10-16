@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :assignments
+  has_many :assignments, dependent: :destroy
   has_many :roles, through: :assignments
 
   # Include default devise modules. Others available are:
@@ -17,4 +17,9 @@ class User < ApplicationRecord
   def student?
     self.roles.exists?(name: 'Student')
   end
+
+  def active?
+    assignments.any? { |assignment| assignment.status == 'active' }
+  end
+  
 end

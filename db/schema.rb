@@ -17,9 +17,14 @@ ActiveRecord::Schema[7.1].define(version: 12) do
   create_table "assignments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "role_id", null: false
+    t.bigint "assigned_by_id", null: false
+    t.datetime "assigned_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["assigned_by_id"], name: "index_assignments_on_assigned_by_id"
     t.index ["role_id"], name: "index_assignments_on_role_id"
+    t.index ["user_id", "role_id"], name: "index_assignments_on_user_id_and_role_id", unique: true
     t.index ["user_id"], name: "index_assignments_on_user_id"
   end
 
@@ -45,19 +50,20 @@ ActiveRecord::Schema[7.1].define(version: 12) do
 
   create_table "lessons", force: :cascade do |t|
     t.string "title"
-    t.text "content"
     t.bigint "topic_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.text "content"
     t.index ["slug"], name: "index_lessons_on_slug", unique: true
     t.index ["topic_id"], name: "index_lessons_on_topic_id"
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_roles_on_name", unique: true
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -99,6 +105,7 @@ ActiveRecord::Schema[7.1].define(version: 12) do
 
   add_foreign_key "assignments", "roles"
   add_foreign_key "assignments", "users"
+  add_foreign_key "assignments", "users", column: "assigned_by_id"
   add_foreign_key "lesson_tags", "lessons"
   add_foreign_key "lesson_tags", "tags"
   add_foreign_key "lessons", "topics"

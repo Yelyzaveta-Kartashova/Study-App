@@ -1,7 +1,9 @@
-puts 'Deleting all subjects, tags and Roles'
+puts 'Deleting all subjects, tags, Users and roles'
 Subject.destroy_all
 Tag.destroy_all
+Assignment.delete_all
 Role.destroy_all
+User.destroy_all 
 
 puts 'Starting seed.........'
 
@@ -114,7 +116,7 @@ Lesson.create!(
   tags: [maths_tag, geometry_tag, shapes_tag]
 )
 
-## Languages Subject
+# Languages Subject
 languages_subject = Subject.create!(
   name: 'Languages',
   image_url: 'https://images.unsplash.com/photo-1561121587-28c15de34c17?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGFuZ3VhZ2VzfGVufDB8fDB8fHww'
@@ -202,25 +204,38 @@ Lesson.create!(
   title: 'The Odin Project - Full Stack Ruby on Rails',
   content: 'The Odin Project provides a free curriculum to learn full stack web development. It focuses on Ruby on Rails and other essential technologies. Check it out here: https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails',
   topic: odin_project_topic,
-  tags: [odin_project_tag, introduction_tag]  # Removed coding_subject and added odin_project_tag
+  tags: [odin_project_tag, introduction_tag]  
 )
 
 Lesson.create!(
   title: 'Rails Guides - Official Documentation',
   content: 'Rails Guides is the official documentation for Ruby on Rails. It covers all aspects of Rails development. Learn more here: https://guides.rubyonrails.org/',
   topic: rails_guides_topic,
-  tags: [rails_guides_tag, documentation_tag]  # Removed coding_subject and added rails_guides_tag
+  tags: [rails_guides_tag, documentation_tag]  
 )
 
 Lesson.create!(
   title: 'Tailwind CSS - Utility-First Framework',
   content: 'Tailwind CSS is a utility-first CSS framework that allows for rapid UI development. Great resources to learn include their official docs (https://tailwindcss.com/docs) and tutorials.',
   topic: tailwind_css_topic,
-  tags: [tailwind_css_tag, css_tag]  # Removed coding_subject and added tailwind_css_tag and css_tag
+  tags: [tailwind_css_tag, css_tag]  
 )
+# Create users 
+system_user = User.create!(email: 'system@example.com', password: 'password')
+admin_user = User.create!(email: 'admin@example.com', password: 'password')
+teacher_user = User.create!(email: 'teacher@example.com', password: 'password')
+student_user = User.create!(email: 'student@example.com', password: 'password')
 
-Role.create!(name: 'Admin')
-Role.create!(name: 'Teacher')
-Role.create!(name: 'Student')
+# Create roles
+admin_role = Role.create!(name: 'Admin')
+teacher_role = Role.create!(name: 'Teacher')
+student_role = Role.create!(name: 'Student')
 
-puts "Seed data for Art, Maths, Languages, Coding, and roles created successfully!"
+# Create assignments to associate users with roles
+Assignment.create!(user: system_user, role: admin_role, assigned_by: system_user)
+Assignment.create!(user: admin_user, role: admin_role, assigned_by: admin_user)
+Assignment.create!(user: teacher_user, role: teacher_role, assigned_by: admin_user)
+Assignment.create!(user: student_user, role: student_role, assigned_by: admin_user)
+
+
+puts "Seed data for Art, Maths, Languages, Coding, Users and Roles created successfully!"
