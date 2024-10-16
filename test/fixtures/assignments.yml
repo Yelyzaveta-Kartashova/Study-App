@@ -3,7 +3,13 @@
 one:
   user: one
   role: one
+  assigned_by: one
+  assigned_at: 2024-10-15 11:48:12
+  status: MyString
 
 two:
   user: two
   role: two
+  assigned_by: two
+  assigned_at: 2024-10-15 11:48:12
+  status: MyString

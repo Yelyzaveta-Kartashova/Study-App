@@ -1,0 +1,80 @@
+<div class="px-6 py-8 mb-10 flex flex-col bg-white border border-gray-200 rounded-lg mt-8">
+  <table class="min-w-full divide-y divide-gray-300 w-full overflow-x-hidden">
+    <thead>
+      <tr>
+        <th scope="col" class="px-1 py-3.5 text-left text-sm font-semibold text-gray-900">User</th>
+        <th scope="col" class="px-0 py-3.5 text-left text-sm font-semibold text-gray-900">Current Roles</th>
+        <th scope="col" class="px-1 py-3.5 text-left text-sm font-semibold text-gray-900">Assigned By</th>
+        <th scope="col" class="px-1 py-3.5 text-left text-sm font-semibold text-gray-900">Role Status</th>
+        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Action</th>
+        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+          <span class="sr-only">Action</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200 bg-white">
+      <% @users.each_with_index do |user, index| %>
+        <tr class="<%= index.even? ? 'bg-gray-50' : '' %>">
+          <td class="whitespace-nowrap px-1 py-1 text-left text-sm text-gray-800"><%= user.email %></td>
+
+          <td class="whitespace-nowrap px-1 py-1 text-left text-sm text-gray-800">
+            <% user.assignments.each do |assignment| %>
+              <%= assignment.role.name %><br>
+            <% end %>
+          </td>
+
+          <td class="whitespace-nowrap px-1 py-1 text-left text-sm text-gray-800">
+            <% user.assignments.each do |assignment| %>
+              <%= assignment.assigned_by.email %><br>
+            <% end %>
+          </td>
+
+          <td class="whitespace-nowrap px-1 py-1 text-left text-sm text-gray-800">
+            <% user.assignments.each do |assignment| %>
+              <span class="<%= assignment.status == 'active' ? 'text-green-500' : assignment.status == 'pending' ? 'text-yellow-500' : 'text-gray-500' %>">
+                <%= assignment.status.capitalize %>
+              </span><br>
+            <% end %>
+          </td>
+
+          <td class="">
+            <% user.assignments.each do |assignment| %>
+              <div class="flex items-center whitespace-nowrap px-3 py-1 text-left text-sm text-gray-800">
+
+
+                <!-- Modal toggle -->
+                <button data-modal-target="edit-role-modal-<%= assignment.id %>" data-modal-toggle="edit-role-modal-<%= assignment.id %>" class="text-blue-600 hover:text-gray-900 font-semibold mr-2" type="button">
+                  Edit
+                </button>
+
+                <%= button_to 'Delete', user_assignment_path(user, assignment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500 hover:text-red-700 font-semibold' %>
+              </div>
+              <%= render partial: 'users/edit_role_modal', locals: { user: user, assignment: assignment } %>
+
+            <% end %>
+          </td>
+
+
+
+
+          <td class="max-w-32 text-right">
+            <!-- Modal toggle -->
+            <button data-modal-target="assign-role-modal-<%= user.id %>" data-modal-toggle="assign-role-modal-<%= user.id %>" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 " type="button">
+              Assign Role
+            </button>
+            <%= render partial: 'users/assign_role_modal', locals: { user: user } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="mt-6">
+    <%= link_to 'New User', new_user_path, class: 'bg-green-900 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500' %>
+  </div>
+</div>
+
+
+
+
+
