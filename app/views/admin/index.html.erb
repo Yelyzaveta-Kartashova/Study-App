@@ -49,7 +49,7 @@
 
                 <%= button_to 'Delete', user_assignment_path(user, assignment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500 hover:text-red-700 font-semibold' %>
               </div>
-              <%= render partial: 'edit_role_modal', locals: { user: user, assignment: assignment } %>
+              <%= render partial: 'users/edit_role_modal', locals: { user: user, assignment: assignment } %>
 
             <% end %>
           </td>
@@ -62,7 +62,7 @@
             <button data-modal-target="assign-role-modal-<%= user.id %>" data-modal-toggle="assign-role-modal-<%= user.id %>" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 " type="button">
               Assign Role
             </button>
-            <%= render partial: 'assign_role_modal', locals: { user: user } %>
+            <%= render partial: 'users/assign_role_modal', locals: { user: user } %>
           </td>
         </tr>
       <% end %>

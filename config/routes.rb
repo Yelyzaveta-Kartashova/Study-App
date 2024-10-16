@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
+  get '/users', to: 'admin#index', as: 'users'
 
   resources :subjects do
     resources :topics do
