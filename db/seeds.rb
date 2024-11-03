@@ -46,28 +46,28 @@ sculpture_topic = Topic.create!(
 
 Lesson.create!(
   title: 'Introduction to Painting',
-  content: 'Painting is one of the oldest forms of artistic expression. It involves applying pigment to a surface to create images or abstract forms.',
+  body: 'Painting is one of the oldest forms of artistic expression. It involves applying pigment to a surface to create images or abstract forms.',
   topic: painting_topic,
   tags: [art_tag, painting_tag, introduction_tag]
 )
 
 Lesson.create!(
   title: 'Famous Painters',
-  content: 'Many painters throughout history have left a mark on the world. Artists like Leonardo da Vinci and Vincent van Gogh are known for their masterpieces.',
+  body: 'Many painters throughout history have left a mark on the world. Artists like Leonardo da Vinci and Vincent van Gogh are known for their masterpieces.',
   topic: painting_topic,
   tags: [art_tag, painting_tag, history_tag]
 )
 
 Lesson.create!(
   title: 'Introduction to Sculpture',
-  content: 'Sculpture is a form of three-dimensional art, usually created by carving, modeling, or assembling materials like stone, clay, or metal.',
+  body: 'Sculpture is a form of three-dimensional art, usually created by carving, modeling, or assembling materials like stone, clay, or metal.',
   topic: sculpture_topic,
   tags: [art_tag, sculpture_tag, introduction_tag]
 )
 
 Lesson.create!(
   title: 'Famous Sculptors',
-  content: 'Some of the most famous sculptors include Michelangelo, known for his work "David", and Auguste Rodin, creator of "The Thinker".',
+  body: 'Some of the most famous sculptors include Michelangelo, known for his work "David", and Auguste Rodin, creator of "The Thinker".',
   topic: sculpture_topic,
   tags: [art_tag, sculpture_tag, history_tag]
 )
@@ -90,28 +90,28 @@ geometry_topic = Topic.create!(
 
 Lesson.create!(
   title: 'Introduction to Algebra',
-  content: 'Algebra is the study of mathematical symbols and the rules for manipulating these symbols. It is foundational for advanced mathematics.',
+  body: 'Algebra is the study of mathematical symbols and the rules for manipulating these symbols. It is foundational for advanced mathematics.',
   topic: algebra_topic,
   tags: [maths_tag, algebra_tag, introduction_tag]
 )
 
 Lesson.create!(
   title: 'Algebraic Equations',
-  content: 'Algebraic equations involve variables and constants. Solving these equations is key to understanding many concepts in mathematics.',
+  body: 'Algebraic equations involve variables and constants. Solving these equations is key to understanding many concepts in mathematics.',
   topic: algebra_topic,
   tags: [maths_tag, algebra_tag, equations_tag]
 )
 
 Lesson.create!(
   title: 'Introduction to Geometry',
-  content: 'Geometry deals with the properties and relations of points, lines, surfaces, and solids. It has applications in many fields, including art and engineering.',
+  body: 'Geometry deals with the properties and relations of points, lines, surfaces, and solids. It has applications in many fields, including art and engineering.',
   topic: geometry_topic,
   tags: [maths_tag, geometry_tag, introduction_tag]
 )
 
 Lesson.create!(
   title: 'Basic Shapes and Angles',
-  content: 'Geometry starts with understanding basic shapes like circles, triangles, and squares. Learning about angles is also fundamental.',
+  body: 'Geometry starts with understanding basic shapes like circles, triangles, and squares. Learning about angles is also fundamental.',
   topic: geometry_topic,
   tags: [maths_tag, geometry_tag, shapes_tag]
 )
@@ -139,42 +139,42 @@ italian_topic = Topic.create!(
 
 Lesson.create!(
   title: 'Introduction to Spanish',
-  content: 'Spanish is a Romance language spoken by over 400 million people worldwide. It is known for its rich culture and history.',
+  body: 'Spanish is a Romance language spoken by over 400 million people worldwide. It is known for its rich culture and history.',
   topic: spanish_topic,
   tags: [spanish_tag, introduction_tag] 
 )
 
 Lesson.create!(
   title: 'Basic Spanish Phrases',
-  content: 'Learning basic phrases like "Hola" (Hello) and "Gracias" (Thank you) is a great way to start your journey in Spanish.',
+  body: 'Learning basic phrases like "Hola" (Hello) and "Gracias" (Thank you) is a great way to start your journey in Spanish.',
   topic: spanish_topic,
   tags: [spanish_tag, phrases_tag]  
 )
 
 Lesson.create!(
   title: 'Introduction to French',
-  content: 'French is a Romance language spoken in many countries around the world. It is the official language in over 29 countries.',
+  body: 'French is a Romance language spoken in many countries around the world. It is the official language in over 29 countries.',
   topic: french_topic,
   tags: [french_tag, introduction_tag]  
 )
 
 Lesson.create!(
   title: 'Basic French Phrases',
-  content: 'French phrases like "Bonjour" (Good day) and "Merci" (Thank you) are essential for everyday conversations.',
+  body: 'French phrases like "Bonjour" (Good day) and "Merci" (Thank you) are essential for everyday conversations.',
   topic: french_topic,
   tags: [french_tag, phrases_tag]  
 )
 
 Lesson.create!(
   title: 'Introduction to Italian',
-  content: 'Italian is a Romance language spoken mainly in Italy. It is known for its rich history, culture, and beautiful landscapes.',
+  body: 'Italian is a Romance language spoken mainly in Italy. It is known for its rich history, culture, and beautiful landscapes.',
   topic: italian_topic,
   tags: [italian_tag, introduction_tag]  
 )
 
 Lesson.create!(
   title: 'Basic Italian Phrases',
-  content: 'Common Italian phrases include "Ciao" (Hello) and "Grazie" (Thank you). Learning these phrases is a great way to start.',
+  body: 'Common Italian phrases include "Ciao" (Hello) and "Grazie" (Thank you). Learning these phrases is a great way to start.',
   topic: italian_topic,
   tags: [italian_tag, phrases_tag]  
 )
@@ -202,29 +202,29 @@ tailwind_css_topic = Topic.create!(
 
 Lesson.create!(
   title: 'The Odin Project - Full Stack Ruby on Rails',
-  content: 'The Odin Project provides a free curriculum to learn full stack web development. It focuses on Ruby on Rails and other essential technologies. Check it out here: https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails',
+  body: 'The Odin Project provides a free curriculum to learn full stack web development. It focuses on Ruby on Rails and other essential technologies. Check it out here: https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails',
   topic: odin_project_topic,
   tags: [odin_project_tag, introduction_tag]  
 )
 
 Lesson.create!(
   title: 'Rails Guides - Official Documentation',
-  content: 'Rails Guides is the official documentation for Ruby on Rails. It covers all aspects of Rails development. Learn more here: https://guides.rubyonrails.org/',
+  body: 'Rails Guides is the official documentation for Ruby on Rails. It covers all aspects of Rails development. Learn more here: https://guides.rubyonrails.org/',
   topic: rails_guides_topic,
   tags: [rails_guides_tag, documentation_tag]  
 )
 
 Lesson.create!(
   title: 'Tailwind CSS - Utility-First Framework',
-  content: 'Tailwind CSS is a utility-first CSS framework that allows for rapid UI development. Great resources to learn include their official docs (https://tailwindcss.com/docs) and tutorials.',
+  body: 'Tailwind CSS is a utility-first CSS framework that allows for rapid UI development. Great resources to learn include their official docs (https://tailwindcss.com/docs) and tutorials.',
   topic: tailwind_css_topic,
   tags: [tailwind_css_tag, css_tag]  
 )
 # Create users 
-system_user = User.create!(email: 'system@example.com', password: 'password')
-admin_user = User.create!(email: 'admin@example.com', password: 'password')
-teacher_user = User.create!(email: 'teacher@example.com', password: 'password')
-student_user = User.create!(email: 'student@example.com', password: 'password')
+system_user = User.create!(name: 'System', email: 'system@example.com', password: 'password')
+admin_user = User.create!(name: 'Admin', email: 'admin@example.com', password: 'password')
+teacher_user = User.create!(name: 'Teacher', email: 'teacher@example.com', password: 'password')
+student_user = User.create!(name: 'Student', email: 'student@example.com', password: 'password')
 
 # Create roles
 admin_role = Role.create!(name: 'Admin')

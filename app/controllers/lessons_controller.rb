@@ -23,9 +23,10 @@ class LessonsController < ApplicationController
     if @lesson.save
       redirect_to subject_topic_lessons_path(@subject, @topic), notice: 'Lesson was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
+
 
   def edit
   end
@@ -34,7 +35,8 @@ class LessonsController < ApplicationController
     if @lesson.update(lesson_params)
       redirect_to subject_topic_lesson_path(@subject, @topic, @lesson), notice: 'Lesson was successfully updated.'
     else
-      render :edit
+      @errors = @lesson.errors if @lesson.errors.any?
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -61,6 +63,6 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:title, :content, tag_ids: [])
+    params.require(:lesson).permit(:title, :body, tag_ids: [])
   end
 end

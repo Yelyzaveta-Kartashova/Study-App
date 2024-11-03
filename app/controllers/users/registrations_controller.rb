@@ -11,11 +11,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super do |resource| # 'resource' is the newly created user
-      # Assuming you have an Assignment model to assign roles
-      if resource.persisted? # Check if the user was saved successfully
+    super do |resource| # 'resource' is a new user
+      if params[:user][:avatar].present?
+        resource.avatar.attach(params[:user][:avatar])
+      end
+
+      if resource.persisted?
         Assignment.create!(
-          user: resource, # Use the resource instead of @user
+          user: resource, 
           role: Role.find_by(name: 'Student'), 
           assigned_by: User.find_by(email: 'system@example.com')
         )
@@ -23,16 +26,29 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @user = current_user
+  end
 
-  # PUT /resource
-  # def update
-  #   super
-  # end
-
+  def update
+    # Check if a new avatar is uploaded and attach it
+    if params[:user][:avatar].present?
+      current_user.avatar.attach(params[:user][:avatar])
+    end
+  
+    # Check if the remove avatar checkbox is checked
+    if params[:user][:remove_avatar] == "1"
+      current_user.avatar.purge # Remove the avatar if the checkbox is checked
+    end
+  
+    # Update user attributes excluding avatar-related parameters
+    if current_user.update(user_params.except(:avatar, :remove_avatar))
+      redirect_to root_path, notice: 'User was successfully updated.' 
+    else
+      @errors = current_user.errors if current_user.errors.any?
+      render :edit, status: :unprocessable_entity
+    end
+  end
   # DELETE /resource
   # def destroy
   #   super
@@ -68,4 +84,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :avatar, :remove_avatar) 
+  end
+
 end

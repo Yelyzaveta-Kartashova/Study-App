@@ -1,11 +1,27 @@
 <div class="flex justify-center items-center mt-10 py-10 px-4 sm:px-6 lg:px-8">
-  <div class="border-2 border-gray-800 p-6 bg-white shadow-lg rounded-lg max-w-sm"> 
+  <div class="border-2 border-gray-800 p-6 bg-white shadow-lg rounded-lg max-w-sm">
     <h2 class="text-3xl font-bold text-center text-gray-800">Sign Up</h2>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :post, class: "space-y-6" }) do |f| %>
+    <%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), html: { method: :post, class: "space-y-6", multipart: true }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="mt-8">
+        <div class="mb-4">
+          <%= f.label :name, class: "block text-gray-700 font-medium mb-2" %>
+          <%= f.text_field :name, class: "w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500", autofocus: true, autocomplete: "name" %>
+        </div>
+
+        <div class="mb-4 mt-2 text-balance" data-controller="user-avatar-uploader">
+          <%= f.label :avatar, class: "block text-sm font-medium text-gray-700" %>
+
+           <!-- File input for adding new avatar -->
+          <%= f.file_field :avatar, class: "mt-2", data: { action: "change->user-avatar-uploader#previewImages", user_avatar_uploader_target: "input"  } %>
+
+          <!-- Preview image will go here -->
+          <div data-user-avatar-uploader-target="preview" class="flex flex-wrap mt-2"></div>
+          
+        </div>
+
         <div class="mb-4">
           <%= f.label :email, class: "block text-gray-700 font-medium mb-2" %>
           <%= f.email_field :email, class: "w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500", autofocus: true, autocomplete: "email" %>
@@ -23,6 +39,7 @@
           <%= f.label :password_confirmation, class: "block text-gray-700 font-medium mb-2" %>
           <%= f.password_field :password_confirmation, class: "w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500", autocomplete: "new-password" %>
         </div>
+
       </div>
 
       <div class="flex items-center justify-end">

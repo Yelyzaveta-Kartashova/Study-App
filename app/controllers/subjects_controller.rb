@@ -1,9 +1,8 @@
-
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
 
   def index
-    @subjects = Subject.all
   end
 
   def show
@@ -43,6 +42,10 @@ class SubjectsController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = current_user
+  end
 
   def set_subject
     @subject = Subject.friendly.find(params[:id])

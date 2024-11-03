@@ -1,14 +1,9 @@
 <div class="bg-cream w-full px-4 py-8 min-h-screen">
-  <% if notice.present? %>
-    <p class="py-2 px-4 bg-green-100 text-green-700 font-medium rounded-lg mb-6" id="notice">
-      <%= notice %>
-    </p>
-  <% end %>
   <% content_for :title, "Topics" %>
 
   <div class="flex space-x-56 mt-5">
     <div>
-      <%= button_to new_subject_topic_path, method: :get, class: "inline-flex  ml-40 mt-4 px-6 py-2 bg-green-900 text-white font-semibold rounded-lg shadow hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2" do %>
+      <%= button_to new_subject_topic_path(@subject), method: :get, class: "inline-flex  ml-40 mt-4 px-6 py-2 bg-green-900 text-white font-semibold rounded-lg shadow hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2" do %>
       <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m7-7H5" />
       </svg>
@@ -49,9 +44,6 @@
             data-transition-leave-to="opacity-0 scale-95"
           >
             <ul class="bg-white border rounded shadow-lg max-h-48 overflow-y-auto">
-              <li>
-                <%= link_to "Show this topic", subject_topic_path(@subject, topic), class: "block px-4 py-2 text-gray-800 hover:bg-gray-200", data: { action: "dropdown#toggle" } %>
-              </li>
               <li>
                 <%= link_to "Edit this topic", edit_subject_topic_path(@subject, topic), class: "block px-4 py-2 text-gray-800 hover:bg-gray-200", data: { action: "dropdown#toggle" } %>
               </li>

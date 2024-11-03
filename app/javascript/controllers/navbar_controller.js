@@ -5,8 +5,15 @@ export default class extends Controller {
   toggleSubjectsMenu() {
     const subjectsMenu = document.getElementById("subjects-menu");
     subjectsMenu.classList.toggle("hidden");
-      
+    console.log(`hello: ${subjectsMenu}`)
     console.log('subjects menu');
+  }
+
+  toggleAvatarMenu() {
+    const avatarMenu = document.getElementById("avatar-menu");
+    avatarMenu.classList.toggle("hidden");
+      
+    console.log('avatar menu');
   }
 
   toggleTopicsMenu(event) {

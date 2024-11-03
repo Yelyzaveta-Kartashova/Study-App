@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :assignments, only: [:edit, :create, :update, :destroy], controller: 'assignments'
+    member do
+      post :update_avatar  # Custom route for updating avatar
+    end
   end
 
   # Health status check

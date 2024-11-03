@@ -1,20 +1,14 @@
 class TopicsController < ApplicationController
   before_action :set_subject
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_topic, only: [:edit, :update, :destroy]
   before_action :set_topics, only: [:new, :edit]
 
   def index
     @topics = @subject.topics
   end
 
-  def show
-    @topic = Topic.friendly.find(params[:id])
-    @lessons = @topic.lessons
-  end
-
   def new
     @topics = @subject.topics
-    @subject = Subject.find(params[:subject_id])
     if @subject.nil?
       redirect_to subjects_path, alert: "Subject not found"
     else
@@ -27,7 +21,7 @@ class TopicsController < ApplicationController
     if @topic.save
       redirect_to [@subject, @topic], notice: 'Topic was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
