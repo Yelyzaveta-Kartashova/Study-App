@@ -24,9 +24,32 @@
   flex-basis: 50%;
   max-width: 50%;
 }
-
-.trix-content action-text-attachment .attachment {
-  padding: 0 !important;
-  max-width: 100% !important;
+.trix-content img {
+  max-width: 400px; /* Limit max width of images */
+  max-height: 200px; /* Limit max height of images */
+  width: auto; /* Allow auto width */
+  height: auto; /* Allow auto height */
 }
 
+
+.trix-content ul li {
+  list-style: disc !important;
+}
+
+.trix-content ol li {
+  list-style: decimal !important;
+}
+
+.trix-body .editor-content blockquote {
+  font-style: italic;
+}
+
+.trix-body .editor-content pre {
+  background-color: rgb(239,240,241);
+}
+
+.trix-content h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
