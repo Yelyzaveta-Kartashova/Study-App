@@ -14,3 +14,4 @@ pin "stimulus-use" # @0.52.2
 pin "slim-select" # @2.9.0
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.esm.js"
+pin "@stimulus-components/clipboard", to: "@stimulus-components--clipboard.js" # @5.0.0
