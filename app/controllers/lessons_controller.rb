@@ -20,13 +20,14 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = @topic.lessons.build(lesson_params)
+    # @lesson.generated_content = params[:generated_content] if params[:generated_content]
     if @lesson.save
       redirect_to subject_topic_lessons_path(@subject, @topic), notice: 'Lesson was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
   end
-
+  
 
   def edit
   end

@@ -220,9 +220,16 @@ Lesson.create!(
   topic: tailwind_css_topic,
   tags: [tailwind_css_tag, css_tag]  
 )
+
+require 'open-uri'
+
 # Create users 
 system_user = User.create!(name: 'System', email: 'system@example.com', password: 'password')
+
 admin_user = User.create!(name: 'Admin', email: 'admin@example.com', password: 'password')
+image_url = 'https://plus.unsplash.com/premium_photo-1675871810360-932ba768e5db?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+admin_user.avatar.attach(io: URI.open(image_url), filename: 'avatar.jpg', content_type: 'image/jpeg')
+
 teacher_user = User.create!(name: 'Teacher', email: 'teacher@example.com', password: 'password')
 student_user = User.create!(name: 'Student', email: 'student@example.com', password: 'password')
 

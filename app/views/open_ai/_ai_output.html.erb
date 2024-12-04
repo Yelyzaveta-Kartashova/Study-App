@@ -1,0 +1,25 @@
+<% @generated_content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra nulla. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquet pulvinar adipiscing. Integer dapibus, metus ac malesuada vestibulum, orci nulla fermentum quam, in aliquet sapien nunc ut arcu. Vivamus vestibulum nisi nec risus vulputate ultrices. Phasellus in urna a erat suscipit suscipit in tincidunt nisl. Mauris sapien libero, pulvinar vitae vehicula quis, elementum at lorem.
+
+Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean eu libero sit amet arcu vehicula ultrices nec quis dolor. Mauris ac magna sagittis sapien fermentum mollis. Curabitur sollicitudin, metus id auctor interdum, dui augue vehicula purus, eget gravida magna est vel neque. Fusce feugiat aliquam urna, sit amet posuere odio sollicitudin et. Cras convallis tellus a ligula convallis ornare. Proin tincidunt turpis sit amet enim vulputate, ut pharetra sem vestibulum. Suspendisse potenti. Duis suscipit ultrices lectus a congue.
+
+" %>
+
+<% if @generated_content %>
+  <div data-controller="clipboard" class="mt-4 p-4 border border-gray-300 rounded-lg bg-gray-100">
+    <div data-controller="clipboard" data-clipboard-success-content-value="Copied!">
+      <div class="flex items-center justify-between mb-2" >
+        <h2 class="text-lg font-semibold">Generated Content:</h2>
+        <button type="button" data-action="clipboard#copy" data-clipboard-target="button">
+          <%= inline_svg("icon_svg/clipboard.svg") %>
+        </button>
+      </div>
+      
+      <div class= 'px-4'>
+        <div value="<%= @generated_content %>" data-clipboard-target="source"  class="w-full bg-gray-100 overflow-hidden line-clamp-4">
+          <%= @generated_content %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<% end %>

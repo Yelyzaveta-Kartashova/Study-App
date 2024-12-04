@@ -1,4 +1,7 @@
-<%= form_with(model: [@subject, @topic, @lesson], turbo: false, class: 'w-full mx-auto p-6 bg-white shadow-md rounded-lg') do |form| %>
+<div class='mt-5 w-full max-w-4xl mx-auto my-auto p-6 bg-white shadow-md rounded-lg' >
+<%= render "open_ai/ai_section"%>
+
+<%= form_with(model: [@subject, @topic, @lesson], turbo: true, class: 'mt-5 w-full max-w-6xl mx-auto my-auto p-6 bg-white shadow-md rounded-lg') do |form| %>
   <div class="mb-4">
     <%= form.label :title, class: 'block text-gray-700 font-medium mb-2' %>
     <%= form.text_field :title, class: 'w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500', required: true %>
@@ -9,12 +12,13 @@
     <%= form.rich_text_area :body, class: "trix-content text-left mt-1 block w-full min-h-64 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500" %>
   </div>
 
-  <div class="mb-4">
+  <div class="mb-4 mt-5">
     <%= form.label :tags, class: 'block text-gray-700 font-medium mb-2'%>
-    <%= form.select :tag_ids, Tag.all.map { |tag| ["#{tag.name}", tag.id] }, {}, { multiple: true, data: { controller: "slim-select" } } %>
+    <%= form.select :tag_ids, Tag.all.map { |tag| ["#{tag.name}", tag.id] }, {}, { multiple: true, class: 'w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500', data: { controller: "slim-select" } } %>
   </div>
 
-  <div class="flex items-center justify-end">
+  <div class="flex items-center justify-end mt-5">
     <%= form.submit 'Save', class: 'bg-green-900 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-blue-500' %>
   </div>
 <% end %>
+</div>

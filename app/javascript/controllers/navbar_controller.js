@@ -5,7 +5,7 @@ export default class extends Controller {
   toggleSubjectsMenu() {
     const subjectsMenu = document.getElementById("subjects-menu");
     subjectsMenu.classList.toggle("hidden");
-    console.log(`hello: ${subjectsMenu}`)
+
     console.log('subjects menu');
   }
 
@@ -23,7 +23,6 @@ export default class extends Controller {
      
     console.log('topics menu');
   }
-
   toggleMobileMenu() {
     const mobileMenu = document.getElementById("mobile-menu");
     mobileMenu.classList.toggle("hidden");
