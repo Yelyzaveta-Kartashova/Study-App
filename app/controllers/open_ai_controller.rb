@@ -21,7 +21,7 @@ class OpenAiController < ApplicationController
               content: generate_content_params[:user_prompt]
             },
           ],
-          max_tokens: 200,
+          max_tokens: 300,
           temperature: 0.5,
           n: 1
         }.to_json

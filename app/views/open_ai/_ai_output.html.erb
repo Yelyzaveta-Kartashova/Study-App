@@ -15,11 +15,17 @@ Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
       </div>
       
       <div class= 'px-4'>
-        <div value="<%= @generated_content %>" data-clipboard-target="source"  class="w-full bg-gray-100 overflow-hidden line-clamp-4">
+        <div value="<%= @generated_content %>" data-clipboard-target="source"  class="w-full bg-gray-100 overflow-hidden line-clamp-4"  id="generated_content">
           <%= @generated_content %>
         </div>
       </div>
-
     </div>
+  </div>
+  <div data-controller="open-ai" 
+    data-action="click->open-ai#toggleShowMore" 
+      class="-mt-2 bg-gray-900 text-white font-semibold py-2 px-4 rounded-md shadow hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 inline-flex items-center">
+    <span data-open-ai-target="buttonText">
+      Show more
+    </span>
   </div>
 <% end %>
