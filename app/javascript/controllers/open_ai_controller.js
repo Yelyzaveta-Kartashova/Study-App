@@ -7,4 +7,15 @@ export default class extends Controller {
     generateOutput.classList.toggle("hidden");
   }
 
+  toggleShowMore() {
+
+    const showMoreButtonText = document.getElementById("show-more");
+    const showMore = document.getElementById("generated_content");
+
+    showMore.classList.toggle("overflow-hidden");
+    showMore.classList.toggle("line-clamp-4");
+
+
+  }
+
 }
