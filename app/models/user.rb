@@ -5,7 +5,9 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,:recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+
+  after_create :send_welcome_email
 
   def admin?
     self.roles.exists?(name: 'Admin')
@@ -21,6 +23,12 @@ class User < ApplicationRecord
 
   def active?
     assignments.any? { |assignment| assignment.status == 'active' }
+  end
+
+  private
+
+  def send_welcome_email
+    DeviseMailer.welcome_email(self).deliver_now
   end
   
 end
