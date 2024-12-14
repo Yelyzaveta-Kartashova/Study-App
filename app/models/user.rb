@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
-  after_create :send_welcome_email
+  #after_create :send_welcome_email
 
   def admin?
     self.roles.exists?(name: 'Admin')
