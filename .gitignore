@@ -38,3 +38,7 @@
 !/app/assets/builds/.keep
 
 .byebug_history
+
+/config/credentials/production.key
+/config/credentials/production.yml.enc
+
