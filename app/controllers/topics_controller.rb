@@ -19,7 +19,7 @@ class TopicsController < ApplicationController
   def create
     @topic = @subject.topics.new(topic_params)
     if @topic.save
-      redirect_to [@subject, @topic], notice: 'Topic was successfully created.'
+      redirect_to subject_topics_path(@subject), notice: 'Topic was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,7 +30,7 @@ class TopicsController < ApplicationController
 
   def update
     if @topic.update(topic_params)
-      redirect_to [@subject, @topic], notice: 'Topic was successfully updated.'
+      redirect_to subject_topics_path(@subject), notice: 'Topic was successfully updated.'
     else
       render :edit
     end

@@ -5,34 +5,30 @@ class OpenAiController < ApplicationController
   def index; end
 
   def generate_content
-    if ENV['SPOOF_AI_RESPONSE'] == 'true'
-      @generated_content = 'SPOOFED RESPONSE'
-    else
-      conn = Faraday.new(url: 'https://api.openai.com/')
-      response = conn.post do |req|
-        req.url "v1/chat/completions"
-        req.headers['Content-Type'] = 'application/json'
-        req.headers['Authorization'] = "Bearer #{ENV['OPENAI_API_KEY']}"
-        req.body = {
-          model: "gpt-4",
-          messages: [
-            {
-              role: "system",
-              content: generate_content_params[:user_prompt]
-            },
-          ],
-          max_tokens: 300,
-          temperature: 0.5,
-          n: 1
-        }.to_json
-      end
+    conn = Faraday.new(url: 'https://api.openai.com/')
+    response = conn.post do |req|
+      req.url "v1/chat/completions"
+      req.headers['Content-Type'] = 'application/json'
+      req.headers['Authorization'] = "Bearer #{ENV['OPENAI_API_KEY']}"
+      req.body = {
+        model: "gpt-4",
+        messages: [
+          {
+            role: "system",
+            content: generate_content_params[:user_prompt]
+          },
+        ],
+        max_tokens: 300,
+        temperature: 0.5,
+        n: 1
+      }.to_json
+    end
 
-      parsed_response = JSON.parse(response.body)
-      if parsed_response.has_key?('error')
-        @ai_output_error = parsed_response['error']['message']
-      else
-        @generated_content = parsed_response["choices"][0]["message"]["content"]
-      end
+    parsed_response = JSON.parse(response.body)
+    if parsed_response.has_key?('error')
+      @ai_output_error = parsed_response['error']['message']
+    else
+      @generated_content = parsed_response["choices"][0]["message"]["content"]
     end
 
     respond_to do |format|

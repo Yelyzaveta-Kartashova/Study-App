@@ -7,7 +7,7 @@
     <%= form.text_field :title, class: 'w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500', required: true %>
   </div>
 
-  <div class="mb-4 mt-2">
+  <div class="mb-4 mt-2" data-controller="trix-file-validator">
     <%= form.label :lesson_content, class: "block text-sm font-medium text-gray-700" %>
     <%= form.rich_text_area :body, class: "trix-content text-left mt-1 block w-full min-h-64 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500" %>
   </div>
