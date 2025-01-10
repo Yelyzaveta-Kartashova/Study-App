@@ -1,6 +1,7 @@
 # README
 
 # Project Name - Study App
+Online - https://study-app-769d4ae5cfd2.herokuapp.com
 
 ## Description
 A Ruby on Rails application designed to manage subjects, topics, and lessons, with features including user roles, image uploads, trix editor and content generation using the OpenAI API. This project leverages Stimulus for enhanced interactivity and Tailwind CSS for styling.
