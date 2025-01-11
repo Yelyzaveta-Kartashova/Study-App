@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   # Health status check
   get "up" => "rails/health#show", as: :rails_health_check
 
+  get 'tools', to: 'tools#index'
   get 'topics', to:'topics#index'
   root 'subjects#index'
 end

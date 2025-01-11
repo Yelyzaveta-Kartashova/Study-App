@@ -15,14 +15,22 @@
             <!-- logo -->
             <div class="max-sm:hidden">
               <div class="sm:flex sm:justify-center">
-                <%= link_to root_path do %>
+                <%= link_to root_path, class: "px-4 py-2 rounded-md shadow-sm px-4 py-2 text-sm font-medium text-white hover:bg-gray-600 focus:outline-non" do %>
                   <img class="h-8 w-auto filter invert" src="https://cdn-icons-png.flaticon.com/128/864/864685.png">
+                <% end %>
+              </div>
+            </div>
+            <!-- tools tab -->
+            <div class="max-sm:hidden">
+              <div class="sm:flex sm:justify-center">
+                <%= link_to tools_path, class: "inline-flex justify-center w-full rounded-md shadow-sm px-4 py-2 text-sm font-medium text-white hover:bg-gray-600 focus:outline-none" do %>
+                <%= inline_svg("icon_svg/tools.svg") %>
                 <% end %>
               </div>
             </div>
             <!-- subjects button -->
             <div data-controller="navbar" class="relative" >
-              <div class="max-sm:hidden" >
+              <div class="max-sm:hidden -ml-2" >
                 <button type="button" class="inline-flex justify-center w-full rounded-md shadow-sm px-4 py-2 text-sm font-medium text-white hover:bg-gray-600 focus:outline-none" data-action="dropdown#toggle click->navbar#toggleSubjectsMenu">
                   Subjects
                   <svg class="ml-2 -mr-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
