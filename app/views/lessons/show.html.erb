@@ -21,14 +21,25 @@
     </div>
   </div>
 
-   <div class="mt-5 mx-auto md:w-2/3 border border-gray-400 space-y-4 p-4 bg-gray-100 rounded-lg shadow-md min-h-[200px] max-h-[400px] overflow-y-auto p-6">
-    <div id="comments" class="space-y-4 p-4">
-      <%= turbo_stream_from "lesson_#{@lesson.id}_comments" %>
-      <%= render @lesson.comments %>
+  <div data-controller="comments-section">
+    <div class="mt-10 mx-auto md:w-2/3">
+      <button type="button"  
+        data-action="click->comments-section#toggleOpenSection"
+        class="flex items-center bg-gray-100 rounded-full border border-gray-300 dark:bg-gray-600 px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-500 transition-all duration-300">
+        <%= inline_svg("icon_svg/message.svg") %>
+        <span class="ml-2 text-gray-900 dark:text-white font-medium">Ask question</span>
+      </button>
     </div>
 
-    <div id="comment_form">
-      <%= render partial: "comments/form", locals: { comment: Comment.new } %>
+    <div id="open-comments" class="hidden mt-5 mx-auto md:w-2/3 border border-gray-400 space-y-4 p-4 bg-gray-100 rounded-lg shadow-md min-h-[200px] max-h-[400px] overflow-y-auto p-6">
+      <div id="comments" class="space-y-4 p-4">
+        <%= turbo_stream_from "lesson_#{@lesson.id}_comments" %>
+        <%= render @lesson.comments, locals: { user: current_user } %>
+      </div>
+
+      <div id="comment_form">
+        <%= render partial: "comments/form", locals: { comment: Comment.new, user: current_user } %>
+      </div>
     </div>
   </div>
 

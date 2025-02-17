@@ -10,8 +10,16 @@ class CommentsController < ApplicationController
 
     if @comment.save
       respond_to do |format|
-        
-        format.turbo_stream
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.append("lesson_#{@lesson.id}_comments", 
+                                partial: "comments/comment", 
+                                locals: { comment: @comment, user: current_user }), 
+            turbo_stream.replace("comment_form", 
+                                 partial: "comments/form", 
+                                 locals: { comment: Comment.new, user: current_user }) 
+          ]
+        end
         format.html { redirect_to subject_topic_lesson_path(@subject, @topic, @lesson) }
       end
     else
@@ -48,5 +56,5 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content)
   end
-  
+
 end
