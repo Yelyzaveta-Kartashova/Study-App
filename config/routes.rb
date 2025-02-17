@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :lessons do
         post 'generate_content', on: :member, to: 'open_ai#generate_content'
         post 'generate_content', on: :collection, to: 'open_ai#generate_content'
+          resources :comments, only: [:create, :destroy]
       end
     end
   end

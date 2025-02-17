@@ -1,4 +1,4 @@
- <div class="flex">
+<div class="flex">
 <%= button_to new_subject_topic_lesson_path(@subject, @topic), method: :get, class: "mt-10 mb-5 inline-flex rounded-lg py-2 px-6 bg-green-900 text-white font-semibold shadow-lg hover:bg-green-800 transition-colors" do %>
   <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m7-7H5" />
@@ -11,19 +11,31 @@
   <div class="flex flex-col space-y-4 border border-gray-400 rounded-lg p-6">
     <h1 class="text-2xl font-bold text-gray-800"><%= @lesson.title %></h1>
     <div class="text-left"><%= @lesson.body.to_s%></div>
-    <div class="flex justify-center mt-2 gap-1 ">
-      <% @lesson.tags.each do |tag| %>
-        <span class="ml-2 mt-2 inline-block bg-blue-100 text-gray-900 text-sm font-medium px-3 py-1 rounded-md">
-          #<%= tag.name %>
-        </span>
-      <% end %>
+      <div class="flex justify-center mt-2 gap-1 ">
+        <% @lesson.tags.each do |tag| %>
+          <span class="ml-2 mt-2 inline-block bg-blue-100 text-gray-900 text-sm font-medium px-3 py-1 rounded-md">
+            #<%= tag.name %>
+          </span>
+        <% end %>
+      </div>
     </div>
   </div>
-    <div class="flex justify-around items-center mt-5 p-4 border-gray-300">
+
+   <div class="mt-5 mx-auto md:w-2/3 border border-gray-400 space-y-4 p-4 bg-gray-100 rounded-lg shadow-md min-h-[200px] max-h-[400px] overflow-y-auto p-6">
+    <div id="comments" class="space-y-4 p-4">
+      <%= turbo_stream_from "lesson_#{@lesson.id}_comments" %>
+      <%= render @lesson.comments %>
+    </div>
+
+    <div id="comment_form">
+      <%= render partial: "comments/form", locals: { comment: Comment.new } %>
+    </div>
+  </div>
+
+  <div class="flex justify-around items-center mt-5 p-4 border-gray-300">
     <%= link_to "Edit this lesson", edit_subject_topic_lesson_path(@subject, @topic, @lesson), class: "inline-flex ml-0 px-4 py-2 bg-gray-300 text-gray-800 font-semibold rounded-lg shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500" %>
     <div class="inline-flex">
-      <%= button_to "Delete this lesson", subject_topic_lesson_path(@subject, @topic, @lesson), method: :delete, data: { confirm: "Are you sure?" }, class: "bg-red-500 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500" %>
+    <%= button_to "Delete this lesson", subject_topic_lesson_path(@subject, @topic, @lesson), method: :delete, data: { confirm: "Are you sure?" }, class: "bg-red-500 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500" %>
     </div>
-  <%= link_to "Back to lessons", subject_topic_lessons_path(@subject, @topic), class: "inline-flex mr-0 px-4 py-2 bg-gray-300 text-gray-800 font-semibold rounded-lg shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500" %>
-  </div>
-</div>
+
+<%= link_to "Back to lessons", subject_topic_lessons_path(@subject, @topic), class: "inline-flex mr-0 px-4 py-2 bg-gray-300 text-gray-800 font-semibold rounded-lg shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500" %>

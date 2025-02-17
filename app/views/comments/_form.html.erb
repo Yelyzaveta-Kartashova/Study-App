@@ -1,0 +1,13 @@
+<%= form_with(model: comment, url: subject_topic_lesson_comments_path(@subject, @topic, @lesson), method: :post, data: { turbo_frame: "comment_form" }, class: "mt-4") do |f| %>
+  <div class="flex items-center gap-4 p-3 bg-white dark:bg-gray-700 rounded-lg shadow-md border">
+    <%= f.text_area :content, placeholder: "Type a message...", 
+                    class: "w-full p-2 text-sm bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500 dark:border-gray-600 dark:text-white",
+                    rows: 1 %>
+
+    <button type="submit" class="p-2 text-green-600 bg-gray-200 rounded-full hover:bg-green-100 dark:text-green-500 dark:bg-gray-600 dark:hover:bg-green-700">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+      </svg>
+    </button>
+  </div>
+<% end %>

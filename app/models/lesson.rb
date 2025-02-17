@@ -6,6 +6,8 @@ class Lesson < ApplicationRecord
   has_many :lesson_tags, dependent: :destroy
   validates :title, :body, presence: true
 
+  has_many :comments, dependent: :destroy
+
   has_many :tags, through: :lesson_tags
   has_rich_text :body
   validates :body, length: { minimum: 5}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 15) do
+ActiveRecord::Schema[7.1].define(version: 16) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +64,16 @@ ActiveRecord::Schema[7.1].define(version: 15) do
     t.index ["role_id"], name: "index_assignments_on_role_id"
     t.index ["user_id", "role_id"], name: "index_assignments_on_user_id_and_role_id", unique: true
     t.index ["user_id"], name: "index_assignments_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "lesson_id", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_comments_on_lesson_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -156,6 +166,8 @@ ActiveRecord::Schema[7.1].define(version: 15) do
   add_foreign_key "assignments", "roles"
   add_foreign_key "assignments", "users"
   add_foreign_key "assignments", "users", column: "assigned_by_id"
+  add_foreign_key "comments", "lessons"
+  add_foreign_key "comments", "users"
   add_foreign_key "lesson_tags", "lessons"
   add_foreign_key "lesson_tags", "tags"
   add_foreign_key "lessons", "topics"

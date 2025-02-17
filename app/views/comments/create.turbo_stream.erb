@@ -1,0 +1,11 @@
+<div id="comments-container" class="space-y-4">
+
+  <%= turbo_stream.append "comments" do %>
+    <%= render partial: "comments/comment", locals: { comment: @comment, user: @user_id } %>
+  <% end %>
+
+  <%= turbo_stream.replace "comment_form" do %>
+    <%= render partial: "comments/form", locals: { comment: Comment.new, user: @user_id } %>
+  <% end %>
+
+</div>

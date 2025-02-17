@@ -10,6 +10,9 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.friendly.find(params[:id])
+    @comments = @lesson.comments.includes(:user)
+    @comment = @lesson.comments.new 
+    @comments = @lesson.comments
   end
   
 
@@ -66,4 +69,9 @@ class LessonsController < ApplicationController
   def lesson_params
     params.require(:lesson).permit(:title, :body, tag_ids: [])
   end
+
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
+
 end
