@@ -11,8 +11,7 @@ class LessonsController < ApplicationController
   def show
     @lesson = Lesson.friendly.find(params[:id])
     @comments = @lesson.comments.includes(:user)
-    @comment = @lesson.comments.new 
-    @comments = @lesson.comments
+    @lesson_uuid = SecureRandom.uuid
   end
   
 

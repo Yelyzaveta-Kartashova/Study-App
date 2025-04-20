@@ -14,10 +14,10 @@ class CommentsController < ApplicationController
           render turbo_stream: [
             turbo_stream.append("lesson_#{@lesson.id}_comments", 
                                 partial: "comments/comment", 
-                                locals: { comment: @comment, user: current_user }), 
+                                locals: { comment: @comment, subject: @subject, topic: @topic, lesson: @lesson, user: current_user }), 
             turbo_stream.replace("comment_form", 
                                  partial: "comments/form", 
-                                 locals: { comment: Comment.new, user: current_user }) 
+                                 locals: { comment: Comment.new, subject: @subject, topic: @topic, lesson: @lesson, user: current_user, }) 
           ]
         end
         format.html { redirect_to subject_topic_lesson_path(@subject, @topic, @lesson) }
