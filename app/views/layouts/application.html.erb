@@ -19,6 +19,7 @@
   <body>
     
     <%= render "shared/navbar" %>
+    <body data-current-user-id="<%= current_user&.id %>">
 
     <div class=" mx-auto">
       <%= turbo_frame_tag :errors do %>
