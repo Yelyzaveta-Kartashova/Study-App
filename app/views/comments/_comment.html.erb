@@ -1,0 +1,15 @@
+<div id="comment_<%= comment.id %>">
+  <!-- 
+  <div class="flex items-start gap-2 <%#= 'justify-end flex-row-reverse' if comment.user == current_user %>">  
+    -->
+    <div class="relative p-3 rounded-lg max-w-md text-sm shadow-md
+                <%#= comment.user == current_user ? 'bg-white text-black' : 'bg-green-100 text-gray-900' %>">
+      <p class="mb-1"><%= comment.content %></p>
+
+      <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">
+        <%= comment.user ? comment.user.name : "User" %> · 
+        <%= comment.created_at.present? ? "#{time_ago_in_words(comment.created_at)} ago" : "Unknown time ago" %>
+      </div>
+
+  </div>
+</div>
