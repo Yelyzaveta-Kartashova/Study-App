@@ -8,21 +8,20 @@
     </button>
   </div>
   <div id="generate-output" class="hidden flex flex-col mt-4 space-y-4">
-    <%= form_with url: (@lesson.persisted? ? generate_content_subject_topic_lesson_path(@subject, @topic, @lesson) : generate_content_subject_topic_lessons_path(@subject, @topic)), scope: 'generate_content', method: :post, data: { turbo: true }, class: "flex flex-col space-y-2" do |form| %>
-      <%= form.text_field :user_prompt, placeholder: "Enter content prompt", 
-          class: "border border-gray-300 rounded-lg px-3 py-2 w-full", required: true %>
-      <%= form.submit "Generate Content", 
-          class: "bg-gray-800 text-gray-900 text-white font-medium rounded-lg px-3 py-2" %>
-    <% end %>
-  </div>
+  <%= form_with url: (@lesson.persisted? ? generate_content_subject_topic_lesson_path(@subject, @topic, @lesson) : generate_content_subject_topic_lessons_path(@subject, @topic)), scope: 'generate_content', method: :post, data: { turbo: true }, class: "flex flex-col space-y-2" do |form| %>
+    <%= form.text_field :user_prompt, placeholder: "Enter content prompt", class: "border border-gray-300 rounded-lg px-3 py-2 w-full", required: true %>
+    <%= form.submit "Generate Content", class: "bg-gray-800 text-gray-900 text-white font-medium rounded-lg px-3 py-2" %>
+  <% end %>
 
-    <%= turbo_frame_tag :ai_output_error do %>
-      <%= render 'open_ai/ai_output_error' %>
-    <% end %>
+  <%= turbo_frame_tag :ai_output_error do %>
+    <%= render 'open_ai/ai_output_error' %>
+  <% end %>
 
-    <%= turbo_frame_tag :ai_output do %>
-      <%= render 'open_ai/ai_output' %>
-    <% end %>
+  <%= turbo_stream_from "ai_output_stream" %>
+
+  <%= turbo_frame_tag :ai_output do %>
+    <%= render 'open_ai/ai_output', lesson: @lesson, generated_content: nil %>
+  <% end %>
 
   </div>
 </div>

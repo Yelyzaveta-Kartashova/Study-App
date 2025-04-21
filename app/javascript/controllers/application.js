@@ -8,6 +8,7 @@ application.register('dropdown', Dropdown)
 application.register('textarea-autogrow', TextareaAutogrow)
 application.register('clipboard', Clipboard)
 
+
 // Configure Stimulus development experience
 application.debug = false
 window.Stimulus   = application

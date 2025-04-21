@@ -26,4 +26,7 @@ Rails.application.routes.draw do
   get 'tools', to: 'tools#index'
   get 'topics', to:'topics#index'
   root 'subjects#index'
+
+  mount MissionControl::Jobs::Engine, at: "/jobs"
+
 end
