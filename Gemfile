@@ -87,3 +87,7 @@ gem "devise", "~> 4.9"
 gem "faker", "~> 3.4"
 
 gem 'pundit'
+
+gem "solid_queue", "~> 1.1"
+
+gem "mission_control-jobs", "~> 1.0"
